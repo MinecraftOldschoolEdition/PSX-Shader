@@ -1,0 +1,111 @@
+{
+  "format": 3,
+  "id": "oldschool:psx",
+  "name": "PSX",
+  "lighting_mode": "rasterized",
+  "engine_defaults": {},
+  "categories": [
+    {
+      "id": "geometry",
+      "label": "Geometry and Textures",
+      "options": [
+        {
+          "id": "wobble",
+          "label": "Terrain Wobble",
+          "description": "Snap full-cube terrain to the geometry grid. Clouds, entities and detailed block models keep their original shapes.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "id": "affine",
+          "label": "Affine Terrain Textures",
+          "description": "Use affine mapping on full-cube terrain. Models keep perspective-correct textures.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "id": "nearest",
+          "label": "Nearest Terrain Textures",
+          "description": "Use unfiltered original texels on full-cube terrain. Model and cloud textures keep their original sampling.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "id": "hand",
+          "label": "PSX Hand Colors",
+          "description": "Apply color reduction and dithering to held items. Geometry and texture mapping stay unchanged.",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "display",
+      "label": "Display and Color",
+      "options": [
+        {
+          "id": "resolution",
+          "label": "Geometry Grid",
+          "type": "enum",
+          "default": "320 x 240",
+          "values": [
+            "320 x 240",
+            "384 x 240",
+            "640 x 480"
+          ],
+          "description": "Pixel grid for terrain wobble and dithering. Display resolution is controlled separately.",
+          "control": "slider"
+        },
+        {
+          "id": "pixelate",
+          "label": "Low Resolution",
+          "description": "Resolve the world at the selected display resolution, preserving the window aspect ratio.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "id": "display_resolution",
+          "label": "Low Resolution Quality",
+          "type": "enum",
+          "default": "720p",
+          "values": [
+            "360p",
+            "540p",
+            "720p",
+            "1080p"
+          ],
+          "description": "720p by default. Keeps the current aspect ratio and never exceeds the source resolution.",
+          "control": "slider"
+        },
+        {
+          "id": "rgb555",
+          "label": "15-bit Color (RGB555)",
+          "description": "Use 32 levels per channel after shading, matching the PS1 color format.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "id": "dither",
+          "label": "PS1 Dithering",
+          "description": "Use the original signed 4 by 4 PS1 dither matrix before conversion to RGB555.",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "programs": {
+    "minecraft_color.vert": "world.vert",
+    "minecraft_compact_terrain.vert": "world.vert",
+    "minecraft_lit_color.vert": "world.vert",
+    "minecraft_weather_cloud.vert": "world.vert",
+    "minecraft_weather.vert": "world.vert",
+    "minecraft_lightning.vert": "world.vert",
+    "minecraft_celestial.vert": "world.vert",
+    "minecraft_color.frag": "world.frag",
+    "minecraft_base_world.frag": "world.frag",
+    "minecraft_non_world.frag": "world.frag",
+    "minecraft_celestial.frag": "world.frag",
+    "minecraft_composite.frag": "display.frag"
+  }
+}

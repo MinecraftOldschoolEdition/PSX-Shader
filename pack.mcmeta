@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "pack_format": 1,
+    "description": "PSX shaders: integer geometry, affine textures, RGB555 and PlayStation dithering."
+  }
+}
